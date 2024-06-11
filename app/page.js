@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const q = query(collection(db, 'JarvisArticle'), orderBy('createdAt', 'desc'));
+      const q = query(collection(db, 'KarenArticles'), orderBy('createdAt', 'desc'));
       const querySnapshot = await getDocs(q);
       const articlesData = await Promise.all(querySnapshot.docs.map(async (docSnapshot) => {
         const data = docSnapshot.data();
