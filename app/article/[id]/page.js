@@ -18,7 +18,7 @@ const Article = ({ params }) => {
   useEffect(() => {
     const fetchArticle = async () => {
       if (id) {
-        const docRef = doc(db, 'JarvisArticle', id);
+        const docRef = doc(db, 'KarenArticles', id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const articleData = docSnap.data();
@@ -42,7 +42,7 @@ const Article = ({ params }) => {
     };
 
     const fetchRecommendedArticles = async () => {
-      const q = query(collection(db, 'JarvisArticle'), orderBy('createdAt', 'desc'));
+      const q = query(collection(db, 'KarenArticles'), orderBy('createdAt', 'desc'));
       const querySnapshot = await getDocs(q);
       const articlesData = await Promise.all(querySnapshot.docs.map(async (docSnapshot) => {
         const data = docSnapshot.data();
