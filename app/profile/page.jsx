@@ -28,7 +28,7 @@ const Page = () => {
     const fetchUserProfile = async () => {
       if (user) {
         // Fetch articles
-        const q = query(collection(db, 'JarvisArticle'), where('author', '==', user.email));
+        const q = query(collection(db, 'KarenArticles'), where('author', '==', user.email));
         const querySnapshot = await getDocs(q);
         const articlesData = await Promise.all(querySnapshot.docs.map(async (docSnapshot) => {
           const data = docSnapshot.data();
@@ -145,7 +145,7 @@ const Page = () => {
   const handleDelete = async (id) => {
     if (confirm("Are you sure you want to delete this article?")) {
       try {
-        await deleteDoc(doc(db, 'JarvisArticle', id));
+        await deleteDoc(doc(db, 'KarenArticles', id));
         setArticles(articles.filter(article => article.id !== id));
         alert("Article deleted successfully.");
       } catch (error) {
