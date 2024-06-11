@@ -22,7 +22,7 @@ const EditArticle = () => {
     if (!id) return;
 
     const fetchArticle = async () => {
-      const docRef = doc(db, "JarvisArticle", id);
+      const docRef = doc(db, "KarenArticles", id);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         const article = docSnap.data();
@@ -39,7 +39,7 @@ const EditArticle = () => {
 
   const handleUpdate = async () => {
     setLoading(true);
-    const docRef = doc(db, "JarvisArticle", id);
+    const docRef = doc(db, "KarenArticles", id);
     await updateDoc(docRef, {
       title: title,
       content: content,
